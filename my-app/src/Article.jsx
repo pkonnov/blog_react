@@ -1,4 +1,6 @@
 import React, {Component} from 'react'
+import CommentsList from './CommentsList'
+
 
 export default class Article extends Component{
   constructor(props) {
@@ -24,7 +26,12 @@ export default class Article extends Component{
   getBody(){ //view and close text article
     if (!this.state.isOpen) return null
     const {article} = this.props
-    return <section>{article.text}</section>
+    return (
+      <section>
+        {article.text}
+        <CommentsList comments = {article.comments} />
+      </section>
+    )
   }
 
   toogleOpen = () => {
